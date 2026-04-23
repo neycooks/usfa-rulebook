@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USFA RULEBOOK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-analytics.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBFHYnrYhr_mdlhqA2yodV_LRhpZrJOQGI",
+    authDomain: "usfa-rulebook.firebaseapp.com",
+    projectId: "usfa-rulebook",
+    storageBucket: "usfa-rulebook.firebasestorage.app",
+    messagingSenderId: "78758828175",
+    appId: "1:78758828175:web:d814426e2a553da361f8fa",
+    measurementId: "G-T8EGSJX3YV"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  </script>
+<body>
+  <div class="background"></div>
+
+  <nav class="navbar">
+    <div class="navbar-liquid-top"></div>
+    <div class="navbar-liquid-bottom"></div>
+    <h1>USFA RULEBOOK</h1>
+  </nav>
+
+  <main class="main-content" id="mainContent">
+    <div class="divider">
+      <div class="icon-container discord">
+        <div class="icon-wrapper">
+          <img class="discord-icon" src="media/discord-new.png" alt="Discord">
+        </div>
+        <span class="icon-label">Server Rules</span>
+      </div>
+
+      <div class="divider-line"></div>
+
+      <div class="icon-container league">
+        <div class="icon-wrapper">
+          <img class="league-icon" src="media/logo.png" alt="League">
+        </div>
+        <span class="icon-label">League Rules</span>
+      </div>
+    </div>
+  </main>
+
+  <div class="welcome-screen" id="welcomeScreen">
+    <h1 class="welcome-title">USFA</h1>
+    <p class="welcome-subtitle">Rulebook</p>
+  </div>
+
+  <script>
+    function createRaindrop() {
+      const drop = document.createElement('div');
+      drop.className = 'raindrop';
+      drop.style.left = Math.random() * 100 + 'vw';
+      drop.style.animationDuration = (Math.random() * 2 + 3) + 's';
+      drop.style.animationDelay = Math.random() * 2 + 's';
+      drop.style.width = (Math.random() * 3 + 3) + 'px';
+      drop.style.height = (Math.random() * 15 + 15) + 'px';
+      drop.style.opacity = Math.random() * 0.2 + 0.2;
+      document.body.appendChild(drop);
+      setTimeout(() => drop.remove(), 5000);
+    }
+
+    for (let i = 0; i < 80; i++) {
+      setTimeout(createRaindrop, Math.random() * 3000);
+    }
+
+    setInterval(createRaindrop, 200);
+
+    document.querySelectorAll('.icon-container').forEach(icon => {
+      icon.addEventListener('click', () => {
+        icon.classList.add('hit');
+        setTimeout(() => icon.classList.remove('hit'), 300);
+      });
+    });
+
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('welcomeScreen').classList.add('hidden');
+        setTimeout(() => {
+          document.getElementById('mainContent').classList.add('visible');
+        }, 300);
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
